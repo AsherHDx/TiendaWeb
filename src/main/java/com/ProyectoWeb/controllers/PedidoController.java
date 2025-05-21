@@ -3,6 +3,7 @@ package com.ProyectoWeb.controllers;
 import com.ProyectoWeb.entities.*;
 import com.ProyectoWeb.repositories.ClienteRepository;
 import com.ProyectoWeb.repositories.EmpleadoRepository;
+import com.ProyectoWeb.services.EmailService;
 import com.ProyectoWeb.services.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,7 @@ public class PedidoController {
         return pedidoService.getById(id);
     }
 
-    //Se tiene que actualizar este método para usar el PedidoDTO o lo que se necesite
+    //Se tiene que actualizar este mét0do para usar el PedidoDTO o lo que se necesite
     @PutMapping("/{id}")
     public Pedido ActualizarPedido(@PathVariable Long id, @RequestBody Pedido ped){
         return pedidoService.update(id,ped);

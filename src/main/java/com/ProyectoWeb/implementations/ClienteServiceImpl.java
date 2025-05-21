@@ -7,6 +7,7 @@ import com.ProyectoWeb.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -41,5 +42,10 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public void delete(Long id) {
         clienteRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Cliente> getAll() {
+        return clienteRepository.findAll();
     }
 }

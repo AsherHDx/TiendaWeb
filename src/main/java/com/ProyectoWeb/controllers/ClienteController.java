@@ -5,6 +5,8 @@ import com.ProyectoWeb.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/apiWeb/cliente")
 @CrossOrigin(origins = "*")
@@ -20,6 +22,11 @@ public class ClienteController {
     @GetMapping("/{id}")
     public Cliente obtenerUnCliente(@PathVariable Long id){
         return clienteService.getById(id);
+    }
+
+    @GetMapping
+    public List<Cliente> obtenerClientes(){
+        return clienteService.getAll();
     }
 
     @PutMapping("/{id}")

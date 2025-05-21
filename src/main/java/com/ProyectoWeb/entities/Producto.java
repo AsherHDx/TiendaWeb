@@ -28,7 +28,8 @@ public class Producto {
     @Column(name = "stock", nullable = false)
     private int stock;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
+    //NOTA, este podría no ir ya que no me interesa en qué detalles está este producto, pero meh, ya se lo puse
+    @OneToMany(mappedBy = "producto")
     @JsonManagedReference("Producto-Detalle")
     private List<DetallePedido> detalles;
 }

@@ -10,6 +10,6 @@ import java.util.List;
 public class PedidoDTO {
     private Long idEmpleado;
     private Long idCliente;
-    private List<DetallePedido> detallePedidos;
-    private Pago pago;
+    private List<DetallePedidoDTO> detallePedidosDTO;
+    private PagoDTO pagoDTO;
 }

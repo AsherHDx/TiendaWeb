@@ -18,20 +18,6 @@ public class PagoServiceImpl implements PagoService {
     @Autowired
     PedidoRepository pedidoRepository;
 
-
-    @Override
-    public Pago insert(PagoDTO pagoDTO) {
-        Pedido pedido = pedidoRepository.findById(pagoDTO.getIdPedido())
-                .orElseThrow(()->new RuntimeException("El pedido no existe"));
-        Pago pago = new Pago();
-        pago.setPedido(pedido);
-        pago.setMetodoPago(pagoDTO.getMetodoPago());
-        pago.setFechaPago(LocalDate.now());
-        pago.setMontoPagado(pagoDTO.getMontoPagado());
-        pedido.setPago(pago);
-        return pagoRepository.save(pago);
-    }
-
     @Override
     public Pago getById(Long id) {
         return pagoRepository.findById(id).orElse(null);

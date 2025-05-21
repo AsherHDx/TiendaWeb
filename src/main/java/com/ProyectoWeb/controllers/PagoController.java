@@ -13,11 +13,6 @@ public class PagoController {
     @Autowired
     PagoService pagoService;
 
-    @PostMapping
-    public Pago insertarPago(@RequestBody PagoDTO pagoDTO){
-        return pagoService.insert(pagoDTO);
-    }
-
     @GetMapping("/{id}")
     public Pago obtenerUnPago(@PathVariable Long id){
         return pagoService.getById(id);

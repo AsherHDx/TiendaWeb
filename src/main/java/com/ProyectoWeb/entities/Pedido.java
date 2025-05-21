@@ -24,14 +24,16 @@ public class Pedido {
     @Column(name = "total", nullable = false)
     private double total;
 
-    @ManyToOne(cascade = CascadeType.ALL) @JoinColumn(name = "idEmpleado")
+    //no uso cascade porque no voy a instanciar Empleados desde pedido (ni modificarlos)
+    @ManyToOne @JoinColumn(name = "idEmpleado")
     @JsonBackReference("Empleado-Pedido")
     private Empleado empleado;
 
-    @ManyToOne(cascade = CascadeType.ALL) @JoinColumn(name = "idCliente")
+    @ManyToOne @JoinColumn(name = "idCliente")
     @JsonBackReference("Cliente-Pedido")
     private Cliente cliente;
 
+    //aquí sí se usa cascade porque con un save(pedido) voy a crear el pedido y tod0s sus detalles
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido")
     @JsonManagedReference("Pedido-Detalle")
     private List<DetallePedido> detalles;

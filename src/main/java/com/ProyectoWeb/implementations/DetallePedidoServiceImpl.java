@@ -21,20 +21,6 @@ public class DetallePedidoServiceImpl implements DetallePedidoService {
 
 
     @Override
-    public DetallePedido insert(DetallePedidoDTO detPedDTO) {
-        Pedido existPed = pedidoRepository.findById(detPedDTO.getIdPedido())
-                .orElseThrow(()->new RuntimeException("El pedido no existe"));
-        Producto existProd = productoRepository.findById(detPedDTO.getIdProducto())
-                .orElseThrow(()->new RuntimeException("El producto no existe"));
-        DetallePedido detPed = new DetallePedido();
-        detPed.setPedido(existPed);
-        detPed.setProducto(existProd);
-        detPed.setCantidad(detPedDTO.getCantidad());
-        detPed.setSubtotal(existProd.getPrecio()*detPed.getCantidad()); //aquí mismo se saca el subtotal
-        return detallePedidoRepository.save(detPed);
-    }
-
-    @Override
     public DetallePedidoResponseDTO getById(Long id) {
         Optional<DetallePedido> detPedOpt = detallePedidoRepository.findById(id);
         if(detPedOpt.isPresent()){

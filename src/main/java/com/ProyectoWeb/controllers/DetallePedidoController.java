@@ -14,11 +14,6 @@ public class DetallePedidoController {
     @Autowired
     DetallePedidoService detallePedidoService;
 
-    @PostMapping
-    public DetallePedido insertarDetalle(@RequestBody DetallePedidoDTO detPedDTO){
-        return detallePedidoService.insert(detPedDTO);
-    }
-
     @GetMapping("/{id}")
     public DetallePedidoResponseDTO obtenerUnDetalle(@PathVariable Long id){
         return detallePedidoService.getById(id);

@@ -5,11 +5,14 @@ import com.ProyectoWeb.repositories.ClienteRepository;
 import com.ProyectoWeb.repositories.EmpleadoRepository;
 import com.ProyectoWeb.repositories.PedidoRepository;
 import com.ProyectoWeb.repositories.ProductoRepository;
+import com.ProyectoWeb.services.EmailService;
 import com.ProyectoWeb.services.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,30 +25,50 @@ public class PedidoServiceImpl implements PedidoService {
     ClienteRepository clienteRepository;
     @Autowired
     ProductoRepository productoRepository;
+    @Autowired
+    EmailService emailService;
 
     @Override
     public Pedido insert(PedidoDTO pedDTO) {
+        //busco si existe el empleado y el cliente relacionados con el pedido en la BD
         Empleado emp = empleadoRepository.findById(pedDTO.getIdEmpleado())
                 .orElseThrow(()->new RuntimeException("Empleado no encontrado"));
         Cliente cl = clienteRepository.findById(pedDTO.getIdCliente())
                 .orElseThrow(()->new RuntimeException("Cliente no encontrado"));
 
+        //creo un Pedido a partir del DTO y calculo/proceso/coloco/busco los datos que faltan
         Pedido ped = new Pedido();
-        ped.setFecha(LocalDate.now());
         ped.setEmpleado(emp);
         ped.setCliente(cl);
+        ped.setFecha(LocalDate.now());
 
-        for(DetallePedido det : pedDTO.getDetallePedidos()){
-            Producto producto = productoRepository.findById(det.getProducto().getIdProducto())
+        //Cada pedido con N productos me va agenerar N cantidad de detalles, aquí hago cada detalle
+        List<DetallePedido> detalles = new ArrayList<>();
+        for(DetallePedidoDTO detalleDTO : pedDTO.getDetallePedidosDTO()){
+            DetallePedido detalle = new DetallePedido();
+            Producto producto = productoRepository.findById(detalleDTO.getIdProducto())
                     .orElseThrow(()-> new RuntimeException("El producto no existe"));
-            det.setProducto(producto);
-            det.setSubtotal(det.calcularSubTotal());
-            det.setPedido(ped);
+            detalle.setProducto(producto);
+            detalle.setPedido(ped);
+            detalle.setCantidad(detalleDTO.getCantidad());
+            detalle.setSubtotal(detalle.calcularSubTotal());
+            detalles.add(detalle);
         }
 
-        ped.setDetalles(pedDTO.getDetallePedidos());
+        ped.setDetalles(detalles);
         ped.setTotal(ped.calcularTotal());
-        ped.setPago(pedDTO.getPago());
+
+        //ahora construyo el pago partiendo del DTO (que solo me da el String "mét0do de pago")
+        Pago pago = new Pago();
+        pago.setPedido(ped);
+        pago.setMetodoPago(pedDTO.getPagoDTO().getMetodoPago());
+        pago.setMontoPagado(ped.getTotal());
+        pago.setFechaPago(LocalDate.now());
+
+        ped.setPago(pago);
+
+        //se utiliza el EmailService para enviar un email al cliente con los detalles de su pedido
+        emailService.enviarEmail(ped);
 
         return pedidoRepository.save(ped);
     }

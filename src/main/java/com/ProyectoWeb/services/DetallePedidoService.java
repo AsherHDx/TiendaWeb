@@ -5,7 +5,7 @@ import com.ProyectoWeb.entities.DetallePedidoDTO;
 import com.ProyectoWeb.entities.DetallePedidoResponseDTO;
 
 public interface DetallePedidoService {
-    public DetallePedido insert(DetallePedidoDTO detPedDTO);
+    //No hay un insert porque no tiene sentido insertar solamente un detalle por separado de su pedido
     public DetallePedidoResponseDTO getById(Long id);
     public DetallePedidoDTO update(Long id, DetallePedidoDTO detPedDTO);
     public void delete(Long id);
