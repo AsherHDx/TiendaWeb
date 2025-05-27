@@ -1,5 +1,6 @@
 package com.ProyectoWeb.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -28,6 +29,7 @@ public class Cliente {
     private String direccion;
 
     @OneToMany(mappedBy = "cliente")
-    @JsonManagedReference("Cliente-Pedido")
+    //@JsonManagedReference("Cliente-Pedido")
+    @JsonIgnore
     private List<Pedido> listaPedidos;
 }

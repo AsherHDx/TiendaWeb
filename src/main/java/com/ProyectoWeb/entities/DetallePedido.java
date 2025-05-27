@@ -19,12 +19,12 @@ public class DetallePedido {
     @Column(name = "subtotal", nullable = false)
     private double subtotal;
 
-    @ManyToOne(cascade = CascadeType.ALL) @JoinColumn(name = "idPedido")
+    @ManyToOne @JoinColumn(name = "idPedido")
     @JsonBackReference("Pedido-Detalle")
     private Pedido pedido;
 
-    @ManyToOne(cascade = CascadeType.ALL) @JoinColumn(name = "idProducto")
-    @JsonBackReference("Producto-Detalle")
+    @ManyToOne @JoinColumn(name = "idProducto")
+    //@JsonBackReference("Producto-Detalle") por el JsonIgnore en Producto
     private Producto producto;
 
     public double calcularSubTotal(){

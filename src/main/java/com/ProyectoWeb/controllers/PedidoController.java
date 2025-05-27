@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @RequestMapping("/apiWeb/pedido")
@@ -29,6 +30,11 @@ public class PedidoController {
     @GetMapping("/{id}")
     public PedidoResponseDTO obtenerUnPedido(@PathVariable Long id){
         return pedidoService.getById(id);
+    }
+
+    @GetMapping
+    public List<PedidoResponseDTO> obtenerPedidos(){
+        return pedidoService.getAll();
     }
 
     //Se tiene que actualizar este mét0do para usar el PedidoDTO o lo que se necesite

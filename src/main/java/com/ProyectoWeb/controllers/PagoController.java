@@ -18,8 +18,4 @@ public class PagoController {
         return pagoService.getById(id);
     }
 
-    @DeleteMapping("/{id}")
-    public void eliminarPago(@PathVariable Long id){
-        pagoService.delete(id);
-    }
 }

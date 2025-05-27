@@ -6,6 +6,7 @@ import com.ProyectoWeb.services.EmpleadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -41,5 +42,10 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     @Override
     public void delete(Long id) {
         empleadoRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Empleado> getAll() {
+        return empleadoRepository.findAll();
     }
 }

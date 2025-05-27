@@ -23,13 +23,4 @@ public class PagoServiceImpl implements PagoService {
         return pagoRepository.findById(id).orElse(null);
     }
 
-    @Override
-    public Pago update(Long id, PagoDTO pagoDTO) {
-        return null;
-    }
-
-    @Override
-    public void delete(Long id) {
-        pagoRepository.deleteById(id);
-    }
 }

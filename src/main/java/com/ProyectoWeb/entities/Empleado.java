@@ -1,5 +1,6 @@
 package com.ProyectoWeb.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -31,6 +32,7 @@ public class Empleado {
     private double salario;
 
     @OneToMany(mappedBy = "empleado")
-    @JsonManagedReference("Empleado-Pedido")
+    //@JsonManagedReference("Empleado-Pedido")
+    @JsonIgnore
     private List<Pedido> listaPedidos;
 }

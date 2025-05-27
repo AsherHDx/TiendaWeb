@@ -26,11 +26,11 @@ public class Pedido {
 
     //no uso cascade porque no voy a instanciar Empleados desde pedido (ni modificarlos)
     @ManyToOne @JoinColumn(name = "idEmpleado")
-    @JsonBackReference("Empleado-Pedido")
+    //@JsonBackReference("Empleado-Pedido") por el JsonIgnore en Empleado
     private Empleado empleado;
 
     @ManyToOne @JoinColumn(name = "idCliente")
-    @JsonBackReference("Cliente-Pedido")
+    //@JsonBackReference("Cliente-Pedido") porque se uso el JsonIgnore en Cliente
     private Cliente cliente;
 
     //aquí sí se usa cascade porque con un save(pedido) voy a crear el pedido y tod0s sus detalles

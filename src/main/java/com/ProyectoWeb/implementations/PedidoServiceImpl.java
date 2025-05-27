@@ -75,14 +75,20 @@ public class PedidoServiceImpl implements PedidoService {
 
     @Override
     public PedidoResponseDTO getById(Long id) {
+        //busco el pedido por ID en la BD
         Optional<Pedido> pedOpt = pedidoRepository.findById(id);
         if(pedOpt.isPresent()){
             Pedido ped = pedOpt.get();
+            //hago el DTO a partir del obtenido
             PedidoResponseDTO pedRespDTO = new PedidoResponseDTO();
             pedRespDTO.setIdPedido(ped.getIdPedido());
             pedRespDTO.setNombreCliente(ped.getCliente().getNombre());
             pedRespDTO.setNombreEmpleado(ped.getEmpleado().getNombre());
-            pedRespDTO.setProductos(ped.getDetalles());
+
+            //Se convierte la lista de DetallePedido en una lista de DTO's
+            List<DetallePedidoResponseDTO> lstDetDTO = mapFromPedidoToResponseDTO(ped);
+            pedRespDTO.setProductos(lstDetDTO);
+
             pedRespDTO.setMetodoPago(ped.getPago().getMetodoPago());
             pedRespDTO.setFecha(ped.getFecha());
             pedRespDTO.setTotal(ped.getTotal());
@@ -90,6 +96,7 @@ public class PedidoServiceImpl implements PedidoService {
         }
         return null;
     }
+
 
     @Override
     public Pedido update(Long id, Pedido ped) {
@@ -107,5 +114,46 @@ public class PedidoServiceImpl implements PedidoService {
     @Override
     public void delete(Long id) {
         pedidoRepository.deleteById(id);
+    }
+
+    @Override
+    public List<PedidoResponseDTO> getAll() {
+        //busco todos mis pedidos
+        List<Pedido> lstPedido = pedidoRepository.findAll();
+        //convierto cada pedido en un responseDTO
+        List<PedidoResponseDTO> lstPedidoDTO = new ArrayList<>();
+        for(Pedido ped: lstPedido){
+            PedidoResponseDTO pedRespDTO = new PedidoResponseDTO();
+            pedRespDTO.setIdPedido(ped.getIdPedido());
+            pedRespDTO.setNombreCliente(ped.getCliente().getNombre());
+            pedRespDTO.setNombreEmpleado(ped.getEmpleado().getNombre());
+
+            //Se convierte la lista de DetallePedido en una lista de DTO's
+            List<DetallePedidoResponseDTO> lstDetDTO = mapFromPedidoToResponseDTO(ped);
+            pedRespDTO.setProductos(lstDetDTO);
+
+            pedRespDTO.setMetodoPago(ped.getPago().getMetodoPago());
+            pedRespDTO.setFecha(ped.getFecha());
+            pedRespDTO.setTotal(ped.getTotal());
+
+            lstPedidoDTO.add(pedRespDTO);
+        }
+        return lstPedidoDTO;
+    }
+
+
+
+    private static List<DetallePedidoResponseDTO> mapFromPedidoToResponseDTO(Pedido ped) {
+        List<DetallePedidoResponseDTO> lstDetDTO = new ArrayList<>();
+        for(DetallePedido detPed : ped.getDetalles()){
+            DetallePedidoResponseDTO detRespDTO = new DetallePedidoResponseDTO();
+            detRespDTO.setIdDetalle(detPed.getIdDetalle());
+            detRespDTO.setIdPedido(detPed.getPedido().getIdPedido());
+            detRespDTO.setNombreProducto(detPed.getProducto().getNombre());
+            detRespDTO.setCantidad(detPed.getCantidad());
+            detRespDTO.setSubtotal(detPed.getSubtotal());
+            lstDetDTO.add(detRespDTO);
+        }
+        return lstDetDTO;
     }
 }

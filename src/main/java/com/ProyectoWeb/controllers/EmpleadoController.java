@@ -5,6 +5,8 @@ import com.ProyectoWeb.services.EmpleadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/apiWeb/empleado")
 @CrossOrigin(origins = "*")
@@ -20,6 +22,11 @@ public class EmpleadoController {
     @GetMapping("/{id}")
     public Empleado obtenerUnEmpleado(@PathVariable Long id){
         return empleadoService.getById(id);
+    }
+
+    @GetMapping
+    public List<Empleado> obtenerEmpleados(){
+        return empleadoService.getAll();
     }
 
     @PutMapping("/{id}")

@@ -25,7 +25,7 @@ public class Pago {
     @Temporal(value = TemporalType.DATE)
     private LocalDate fechaPago;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "idPedido", unique = true)
     @JsonBackReference("Pedido-Pago")
     private Pedido pedido;

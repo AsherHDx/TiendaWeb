@@ -12,7 +12,7 @@ public class PedidoResponseDTO {
     private Long idPedido;
     private String nombreCliente;
     private String nombreEmpleado;
-    private List<DetallePedido> productos;
+    private List<DetallePedidoResponseDTO> productos;
     private String metodoPago;
     private LocalDate fecha;
     private double total;

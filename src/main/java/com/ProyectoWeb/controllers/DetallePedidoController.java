@@ -19,8 +19,4 @@ public class DetallePedidoController {
         return detallePedidoService.getById(id);
     }
 
-    @DeleteMapping("/{id}")
-    public void eliminarDetalle(@PathVariable Long id){
-        detallePedidoService.delete(id);
-    }
 }

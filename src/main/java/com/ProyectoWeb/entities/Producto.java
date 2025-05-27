@@ -1,5 +1,6 @@
 package com.ProyectoWeb.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -30,6 +31,7 @@ public class Producto {
 
     //NOTA, este podría no ir ya que no me interesa en qué detalles está este producto, pero meh, ya se lo puse
     @OneToMany(mappedBy = "producto")
-    @JsonManagedReference("Producto-Detalle")
+    //@JsonManagedReference("Producto-Detalle")
+    @JsonIgnore
     private List<DetallePedido> detalles;
 }

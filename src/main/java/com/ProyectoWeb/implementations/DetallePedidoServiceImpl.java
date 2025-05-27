@@ -36,14 +36,5 @@ public class DetallePedidoServiceImpl implements DetallePedidoService {
         return null;
     }
 
-    //FALTA IMPLEMENTAR ESTA WEA
-    @Override
-    public DetallePedidoDTO update(Long id, DetallePedidoDTO detPedDTO) {
-        return null;
-    }
 
-    @Override
-    public void delete(Long id) {
-        detallePedidoRepository.deleteById(id);
-    }
 }
