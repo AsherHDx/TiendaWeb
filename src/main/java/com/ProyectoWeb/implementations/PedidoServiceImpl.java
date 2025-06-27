@@ -50,12 +50,21 @@ public class PedidoServiceImpl implements PedidoService {
                     .orElseThrow(()-> new RuntimeException("El producto no existe"));
             detalle.setProducto(producto);
             detalle.setPedido(ped);
+            //verifico que haya stock suficiente, si lo hay, modifico el stock de producto
+            if(detalleDTO.getCantidad() < producto.getStock()){
+                producto.setStock(producto.getStock()-detalleDTO.getCantidad());
+                productoRepository.save(producto);
+            }else{
+                throw new RuntimeException("No hay sufuciente stock del producto"
+                        + producto.getNombre() + "para surtir el pedido");
+            }
             detalle.setCantidad(detalleDTO.getCantidad());
             detalle.setSubtotal(detalle.calcularSubTotal());
+            //se añade el detalle hecho a la lista
             detalles.add(detalle);
         }
 
-        ped.setDetalles(detalles);
+        ped.setDetalles(detalles);//Se añade la lista de detalles al pedido
         ped.setTotal(ped.calcularTotal());
 
         //ahora construyo el pago partiendo del DTO (que solo me da el String "mét0do de pago")

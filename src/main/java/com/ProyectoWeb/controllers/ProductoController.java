@@ -5,6 +5,8 @@ import com.ProyectoWeb.services.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/apiWeb/producto")
 @CrossOrigin(origins = "*")
@@ -20,6 +22,11 @@ public class ProductoController {
     @GetMapping("/{id}")
     public Producto obtenerUnProducto(@PathVariable Long id){
         return productoService.getById(id);
+    }
+
+    @GetMapping
+    public List<Producto> obtenerProductos(){
+        return productoService.getAll();
     }
 
     @PutMapping("/{id}")
