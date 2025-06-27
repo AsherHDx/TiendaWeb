@@ -4,7 +4,9 @@ import com.ProyectoWeb.entities.Producto;
 import com.ProyectoWeb.services.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -15,8 +17,9 @@ public class ProductoController {
     ProductoService productoService;
 
     @PostMapping
-    public Producto insertarProducto(@RequestBody Producto p){
-        return productoService.insert(p);
+    public Producto insertarProducto(@RequestParam("producto") String productoJSON,
+                                     @RequestParam("archivo") MultipartFile img) throws IOException {
+        return productoService.insert(productoJSON, img);
     }
 
     @GetMapping("/{id}")
@@ -30,12 +33,14 @@ public class ProductoController {
     }
 
     @PutMapping("/{id}")
-    public Producto actualizarProducto(@PathVariable Long id, @RequestBody Producto p){
-        return productoService.update(id,p);
+    public Producto actualizarProducto(@PathVariable Long id,
+                                       @RequestParam("producto") String productoJSON,
+                                       @RequestParam("archivo") MultipartFile img) throws IOException {
+        return productoService.update(id,productoJSON,img);
     }
 
     @DeleteMapping("/{id}")
-    public void eliminarProducto(@PathVariable Long id){
+    public void eliminarProducto(@PathVariable Long id) throws IOException {
         productoService.delete(id);
     }
 }

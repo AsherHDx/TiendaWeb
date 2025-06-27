@@ -29,6 +29,10 @@ public class Producto {
     @Column(name = "stock", nullable = false)
     private int stock;
 
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "producto")
+    @JsonManagedReference("ImagenProducto")
+    private ImagenProducto img;
+
     //NOTA, este podría no ir ya que no me interesa en qué detalles está este producto, pero meh, ya se lo puse
     @OneToMany(mappedBy = "producto")
     //@JsonManagedReference("Producto-Detalle")
