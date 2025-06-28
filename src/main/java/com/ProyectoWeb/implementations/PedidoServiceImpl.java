@@ -7,6 +7,7 @@ import com.ProyectoWeb.repositories.PedidoRepository;
 import com.ProyectoWeb.repositories.ProductoRepository;
 import com.ProyectoWeb.services.EmailService;
 import com.ProyectoWeb.services.PedidoService;
+import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +30,7 @@ public class PedidoServiceImpl implements PedidoService {
     EmailService emailService;
 
     @Override
-    public Pedido insert(PedidoDTO pedDTO) {
+    public Pedido insert(PedidoDTO pedDTO) throws MessagingException {
         //busco si existe el empleado y el cliente relacionados con el pedido en la BD
         Empleado emp = empleadoRepository.findById(pedDTO.getIdEmpleado())
                 .orElseThrow(()->new RuntimeException("Empleado no encontrado"));

@@ -5,6 +5,7 @@ import com.ProyectoWeb.repositories.ClienteRepository;
 import com.ProyectoWeb.repositories.EmpleadoRepository;
 import com.ProyectoWeb.services.EmailService;
 import com.ProyectoWeb.services.PedidoService;
+import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class PedidoController {
     ClienteRepository clienteRepository;
 
     @PostMapping
-    public Pedido insertarPedido(@RequestBody PedidoDTO pedDTO){
+    public Pedido insertarPedido(@RequestBody PedidoDTO pedDTO) throws MessagingException {
         return pedidoService.insert(pedDTO);
     }
 
