@@ -11,6 +11,7 @@ com\ProyectoWeb\entities\Empleado.class
 com\ProyectoWeb\controllers\PedidoController.class
 com\ProyectoWeb\controllers\DetallePedidoController.class
 com\ProyectoWeb\services\ClienteService.class
+com\ProyectoWeb\implementations\PdfServiceImpl.class
 com\ProyectoWeb\repositories\EmpleadoRepository.class
 com\ProyectoWeb\controllers\ClienteController.class
 com\ProyectoWeb\controllers\EmpleadoController.class
@@ -25,11 +26,14 @@ com\ProyectoWeb\services\EmpleadoService.class
 com\ProyectoWeb\entities\PedidoDTO.class
 com\ProyectoWeb\entities\PedidoResponseDTO.class
 com\ProyectoWeb\implementations\ClienteServiceImpl.class
+com\ProyectoWeb\entities\ImagenProducto.class
 com\ProyectoWeb\implementations\PedidoServiceImpl.class
 com\ProyectoWeb\entities\Producto.class
 com\ProyectoWeb\entities\Pedido.class
+com\ProyectoWeb\services\PdfService.class
 com\ProyectoWeb\implementations\EmpleadoServiceImpl.class
 com\ProyectoWeb\entities\Pago.class
+com\ProyectoWeb\repositories\ImagenProductoRepository.class
 com\ProyectoWeb\entities\Cliente.class
 com\ProyectoWeb\services\EmailService.class
 com\ProyectoWeb\ProyectoWebApplication.class
