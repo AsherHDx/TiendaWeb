@@ -7,6 +7,7 @@ import com.ProyectoWeb.services.ImageService;
 import com.ProyectoWeb.services.ProductoService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.transaction.Transactional;
 import org.aspectj.apache.bcel.classfile.Module;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,7 +65,7 @@ public class ProductoServiceImpl implements ProductoService {
         return productoRepository.findById(id).orElse(null);
     }
 
-    @Override
+    @Override @Transactional
     public Producto update(Long id, String productoJSON) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         Producto p = mapper.readValue(productoJSON,Producto.class);
@@ -82,7 +83,7 @@ public class ProductoServiceImpl implements ProductoService {
         return null;
     }
 
-    @Override
+    @Override @Transactional
     public void delete(Long id) throws IOException {
         Producto p = productoRepository.findById(id).orElseThrow(
                 ()->new RuntimeException("El producto no existe"));
