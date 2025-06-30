@@ -2,6 +2,7 @@ com\ProyectoWeb\entities\DetallePedidoResponseDTO.class
 com\ProyectoWeb\repositories\DetallePedidoRepository.class
 com\ProyectoWeb\implementations\PagoServiceImpl.class
 com\ProyectoWeb\services\DetallePedidoService.class
+com\ProyectoWeb\configurations\CloudinaryConfig.class
 com\ProyectoWeb\entities\DetallePedido.class
 com\ProyectoWeb\entities\PagoDTO.class
 com\ProyectoWeb\repositories\ClienteRepository.class
@@ -11,10 +12,12 @@ com\ProyectoWeb\entities\Empleado.class
 com\ProyectoWeb\controllers\PedidoController.class
 com\ProyectoWeb\controllers\DetallePedidoController.class
 com\ProyectoWeb\services\ClienteService.class
+com\ProyectoWeb\implementations\ImageServiceImpl.class
 com\ProyectoWeb\implementations\PdfServiceImpl.class
 com\ProyectoWeb\repositories\EmpleadoRepository.class
 com\ProyectoWeb\controllers\ClienteController.class
 com\ProyectoWeb\controllers\EmpleadoController.class
+com\ProyectoWeb\services\ImageService.class
 com\ProyectoWeb\services\PedidoService.class
 com\ProyectoWeb\implementations\DetallePedidoServiceImpl.class
 com\ProyectoWeb\services\ProductoService.class

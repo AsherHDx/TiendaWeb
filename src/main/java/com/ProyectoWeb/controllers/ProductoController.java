@@ -34,9 +34,8 @@ public class ProductoController {
 
     @PutMapping("/{id}")
     public Producto actualizarProducto(@PathVariable Long id,
-                                       @RequestParam("producto") String productoJSON,
-                                       @RequestParam("archivo") MultipartFile img) throws IOException {
-        return productoService.update(id,productoJSON,img);
+                                       @RequestParam("producto") String productoJSON) throws IOException {
+        return productoService.update(id,productoJSON);
     }
 
     @DeleteMapping("/{id}")

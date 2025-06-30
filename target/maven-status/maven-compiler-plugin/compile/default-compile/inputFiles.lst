@@ -1,3 +1,4 @@
+C:\Users\Asher\Documents\ESCOM\Desarrollo Web\ProyectoFinal\ProyectoWeb\src\main\java\com\ProyectoWeb\configurations\CloudinaryConfig.java
 C:\Users\Asher\Documents\ESCOM\Desarrollo Web\ProyectoFinal\ProyectoWeb\src\main\java\com\ProyectoWeb\controllers\ClienteController.java
 C:\Users\Asher\Documents\ESCOM\Desarrollo Web\ProyectoFinal\ProyectoWeb\src\main\java\com\ProyectoWeb\controllers\DetallePedidoController.java
 C:\Users\Asher\Documents\ESCOM\Desarrollo Web\ProyectoFinal\ProyectoWeb\src\main\java\com\ProyectoWeb\controllers\EmpleadoController.java
@@ -20,6 +21,7 @@ C:\Users\Asher\Documents\ESCOM\Desarrollo Web\ProyectoFinal\ProyectoWeb\src\main
 C:\Users\Asher\Documents\ESCOM\Desarrollo Web\ProyectoFinal\ProyectoWeb\src\main\java\com\ProyectoWeb\implementations\DetallePedidoServiceImpl.java
 C:\Users\Asher\Documents\ESCOM\Desarrollo Web\ProyectoFinal\ProyectoWeb\src\main\java\com\ProyectoWeb\implementations\EmailServiceimpl.java
 C:\Users\Asher\Documents\ESCOM\Desarrollo Web\ProyectoFinal\ProyectoWeb\src\main\java\com\ProyectoWeb\implementations\EmpleadoServiceImpl.java
+C:\Users\Asher\Documents\ESCOM\Desarrollo Web\ProyectoFinal\ProyectoWeb\src\main\java\com\ProyectoWeb\implementations\ImageServiceImpl.java
 C:\Users\Asher\Documents\ESCOM\Desarrollo Web\ProyectoFinal\ProyectoWeb\src\main\java\com\ProyectoWeb\implementations\PagoServiceImpl.java
 C:\Users\Asher\Documents\ESCOM\Desarrollo Web\ProyectoFinal\ProyectoWeb\src\main\java\com\ProyectoWeb\implementations\PdfServiceImpl.java
 C:\Users\Asher\Documents\ESCOM\Desarrollo Web\ProyectoFinal\ProyectoWeb\src\main\java\com\ProyectoWeb\implementations\PedidoServiceImpl.java
@@ -36,6 +38,7 @@ C:\Users\Asher\Documents\ESCOM\Desarrollo Web\ProyectoFinal\ProyectoWeb\src\main
 C:\Users\Asher\Documents\ESCOM\Desarrollo Web\ProyectoFinal\ProyectoWeb\src\main\java\com\ProyectoWeb\services\DetallePedidoService.java
 C:\Users\Asher\Documents\ESCOM\Desarrollo Web\ProyectoFinal\ProyectoWeb\src\main\java\com\ProyectoWeb\services\EmailService.java
 C:\Users\Asher\Documents\ESCOM\Desarrollo Web\ProyectoFinal\ProyectoWeb\src\main\java\com\ProyectoWeb\services\EmpleadoService.java
+C:\Users\Asher\Documents\ESCOM\Desarrollo Web\ProyectoFinal\ProyectoWeb\src\main\java\com\ProyectoWeb\services\ImageService.java
 C:\Users\Asher\Documents\ESCOM\Desarrollo Web\ProyectoFinal\ProyectoWeb\src\main\java\com\ProyectoWeb\services\PagoService.java
 C:\Users\Asher\Documents\ESCOM\Desarrollo Web\ProyectoFinal\ProyectoWeb\src\main\java\com\ProyectoWeb\services\PdfService.java
 C:\Users\Asher\Documents\ESCOM\Desarrollo Web\ProyectoFinal\ProyectoWeb\src\main\java\com\ProyectoWeb\services\PedidoService.java

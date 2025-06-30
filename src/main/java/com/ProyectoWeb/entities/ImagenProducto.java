@@ -16,8 +16,11 @@ public class ImagenProducto {
     @Column(name = "nombreImg", length = 35, nullable = false)
     private String nombreImg;
 
-    @Column(name = "uri", length = 100, nullable = false)
-    private String uri;
+    @Column(name = "url", length = 200, nullable = false)
+    private String url;
+
+    @Column(name = "publicId", length = 200)
+    private String publicId;
 
     @Column(name = "formato", length = 10, nullable = false)
     private String formato;
